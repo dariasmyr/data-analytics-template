@@ -11,11 +11,11 @@ async function deleteAll() {
   await prisma.channel.deleteMany();
 }
 
-async function main() {
+async function convertToJs() {
   await deleteAll();
   console.log('Size:', channelsJson.length);
   await prisma.$connect();
-  let currentChannelId: string | null = null;
+  let currentChannelId: string | null;
   setInterval(() => {
     console.log('Current channel ID:', currentChannelId);
   }, 1000);
@@ -27,7 +27,9 @@ async function main() {
     const channelDatabase = await prisma.channel.create({
       data: {
         id: channel.data.broadcaster_id,
+        // eslint-disable-next-line camelcase
         broadcaster_name: channel.data.broadcaster_name,
+        // eslint-disable-next-line camelcase
         broadcaster_language: channel.data.broadcaster_language,
         followers: channel.followers,
       },
@@ -82,12 +84,18 @@ async function main() {
   console.log('!!!!!!!!!!!!!!!Done!!!!!!!!!!!!!!!');
 }
 
-main()
-  .then(async () => {
+async function main() {
+  try {
+    await convertToJs();
     await prisma.$disconnect();
-  })
-  .catch(async (error) => {
+  } catch (error) {
     console.error(error);
     await prisma.$disconnect();
-    process.exit(1);
-  });
+    console.error('!!!!!!!!!!!!!!!Error!!!!!!!!!!!!!!!');
+  }
+}
+
+// eslint-disable-next-line unicorn/prefer-top-level-await
+main().catch((error) => {
+  throw error;
+});
