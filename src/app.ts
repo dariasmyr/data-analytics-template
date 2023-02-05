@@ -18,6 +18,7 @@ async function convertToJs() {
   let currentChannelId: string | null;
   setInterval(() => {
     console.log('Current channel ID:', currentChannelId);
+    // eslint-disable-next-line no-magic-numbers
   }, 1000);
   for (const channel of channelsJson) {
     if (!channel.data?.broadcaster_id) {
