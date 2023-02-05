@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../data/data.sqlite3"
+}
+
+model Channel {
+  id                   String  @id @default(cuid())
+  broadcaster_name     String
+  broadcaster_language String
+  followers            Int
+  tags                 Tag[]
+  game                 Game?   @relation(fields: [gameId], references: [id])
+  gameId               String?
+}
+
+model Game {
+  id       String    @id @default(cuid())
+  name     String
+  genres   Genre[]
+  rating   Float?
+  slug     String?
+  channels Channel[]
+}
+
+model Tag {
+  value     String   @id
+  channels   Channel[]
+}
+
+model Genre {
+  value String @id
+  game  Game[]
+}
