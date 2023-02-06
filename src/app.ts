@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
+// TODO Implement a separate module with connection to the database like NeDB. Configure logging. Configure the database connection route.
 import channelsJson from '../data/twitch-channels-template.json';
 
 const prisma = new PrismaClient();
