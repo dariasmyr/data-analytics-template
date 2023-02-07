@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/src/logger/logger-test.js",
+    "start": "node dist/src/app.js",
     "lint": "npx eslint .",
     "lint:fix": "npm run lint --fix",
     "test": "jest",
@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.9.0",
+    "@seald-io/nedb": "^4.0.0",
     "axios": "^1.3.2",
     "log4js": "^6.7.1",
     "prettier": "^2.8.3",
