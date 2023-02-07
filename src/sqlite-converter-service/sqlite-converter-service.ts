@@ -2,8 +2,6 @@ import { PrismaClient } from '@prisma/client';
 
 import { Logger } from '../logger/logger';
 
-// TODO Implement a separate module with connection to the database like NeDB. Configure logging. Configure the database connection route.
-
 export class SqliteConverterService {
   public prisma: PrismaClient;
   private readonly logger: Logger;
