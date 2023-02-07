@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/src/app.js",
+    "start": "node dist/src/logger/logger-test.js",
     "lint": "npx eslint .",
     "lint:fix": "npm run lint --fix",
     "test": "jest",
@@ -28,14 +28,15 @@
   },
   "homepage": "https://gitlab.com/daria_smyr/data-analytics-template#readme",
   "devDependencies": {
+    "@jetbrains/eslint-config": "^5.4.1",
     "@types/node": "^18.11.19",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "eslint": "^8.33.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-jest": "^27.2.1",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-comments": "^1.0.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-no-secrets": "^0.8.9",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
@@ -43,7 +44,6 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-sonarjs": "^0.18.0",
     "eslint-plugin-unicorn": "^45.0.2",
-    "@jetbrains/eslint-config": "^5.4.1",
     "jest": "^29.4.1",
     "nodemon": "^2.0.20",
     "prisma": "^4.9.0",
@@ -53,6 +53,7 @@
   "dependencies": {
     "@prisma/client": "^4.9.0",
     "axios": "^1.3.2",
+    "log4js": "^6.7.1",
     "prettier": "^2.8.3",
     "sqlite3": "^5.1.4"
   }
