@@ -7,7 +7,9 @@ const logger = new Logger('App');
 
 // Use this function to create NeDB database to collect and operate with raw data
 async function createNedbDatabase() {
-  const usersDatastore = NedbDatabaseFactory.create('..twitch-servers.db');
+  const usersDatastore = NedbDatabaseFactory.create(
+    '../data/twitch-servers.db',
+  );
   if (usersDatastore) {
     logger.debug('Database created');
   }
