@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import channelsJson from '../data/twitch-channels-template.json';
 import { Logger } from './logger/logger';
 import { NedbDatabaseFactory } from './nedb-database-factory/nedb-database-factory';
@@ -7,12 +9,18 @@ const logger = new Logger('App');
 
 // Use this function to create NeDB database to collect and operate with raw data
 async function createNedbDatabase() {
-  const usersDatastore = NedbDatabaseFactory.create(
-    '../data/twitch-servers.db',
+  const USER_DATASTORE_FILE_PATH = path.join(
+    // eslint-disable-next-line unicorn/prefer-module
+    __dirname,
+    '..',
+    'data',
+    'twitch-servers.db',
   );
+  const usersDatastore = NedbDatabaseFactory.create(USER_DATASTORE_FILE_PATH);
   if (usersDatastore) {
     logger.debug('Database created');
   }
+  await usersDatastore.removeAsync({}, { multi: true });
   // Insert data to the database
   for (const channel of channelsJson) {
     const result = await usersDatastore.insertAsync(channel);
