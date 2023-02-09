@@ -2,7 +2,7 @@
   "name": "data-analytics-template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node dist/app.js",
     "lint": "npx eslint .",
@@ -21,8 +21,8 @@
     "url": "git+https://gitlab.com/daria_smyr/data-analytics-template.git"
   },
   "keywords": [],
-  "author": "Daria",
-  "license": "ISC",
+  "author": "daria_smyr",
+  "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/daria_smyr/data-analytics-template/issues"
   },
