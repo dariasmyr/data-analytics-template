@@ -4,7 +4,7 @@ This data analytics template provides a quick and easy solution for connecting t
 ## Getting Started
 1) Clone this repository to your local machine:
 bash
-`git clone https://github.com/<your-username>/data-analytics-template.git`
+`git clone https://gitlab.com/daria_smyr/data-analytics-template.git`
 2) Install the necessary dependencies:
 `npm install`
 3) Create and connect to your NeDB database by updating the database file path in `src/app.ts`.
@@ -26,7 +26,7 @@ bash
 - ESlint
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md] file for details.
 
 ## Contributing
 If you find any issues or want to contribute to this project, please feel free to submit a pull request or open an issue. All contributions and feedback are welcomed!
