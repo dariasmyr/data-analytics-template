@@ -10,31 +10,82 @@ datasource db {
   url      = "file:../data/data.sqlite3"
 }
 
-model Channel {
-  id                   String  @id @default(cuid())
-  broadcaster_name     String
-  broadcaster_language String
-  followers            Int
-  tags                 Tag[]
-  game                 Game?   @relation(fields: [gameId], references: [id])
-  gameId               String?
+model Users {
+  id        Int         @id @default(autoincrement())
+  name      String
+  email     String      @unique
+  password  String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  // Relationships
+  customer  Customers[]
 }
 
-model Game {
-  id       String    @id @default(cuid())
-  name     String
-  genres   Genre[]
-  rating   Float?
-  slug     String?
-  channels Channel[]
+model Customers {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // Relationships
+  orders    Orders[]
+  // Foreign key
+  userId    Int?
+  user      Users?   @relation(fields: [userId], references: [id])
 }
 
-model Tag {
-  value     String   @id
-  channels   Channel[]
+model Orders {
+  id          Int          @id @default(autoincrement())
+  customerId  Int
+  orderDate   DateTime
+  totalAmount Float
+  status      String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  customer    Customers    @relation(fields: [customerId], references: [id])
+  OrderItem   OrderItems[]
 }
 
-model Genre {
-  value String @id
-  game  Game[]
+model OrderItems {
+  id        Int      @id @default(autoincrement())
+  orderId   Int      @unique
+  productId Int
+  quantity  Int
+  unitPrice Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  order     Orders   @relation(fields: [orderId], references: [id])
+  product   Products @relation(fields: [productId], references: [id])
+}
+
+model Products {
+  id              Int                 @id @default(autoincrement())
+  name            String
+  description     String
+  price           Float
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  OrderItem       OrderItems[]
+  categoryId      Int
+  ProductCategory ProductCategories[]
+  Category        Categories          @relation(fields: [categoryId], references: [id])
+}
+
+model Categories {
+  id              Int                 @id @default(autoincrement())
+  name            String
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  ProductCategory ProductCategories[]
+  Product         Products[]
+}
+
+model ProductCategories {
+  id         Int        @id @default(autoincrement())
+  productId  Int
+  categoryId Int
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  product    Products   @relation(fields: [productId], references: [id])
+  category   Categories @relation(fields: [categoryId], references: [id])
 }
