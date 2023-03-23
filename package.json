@@ -5,7 +5,6 @@
   "main": "app.js",
   "scripts": {
     "start": "node dist/app.js",
-    "seeds": "node dist/seeds.js",
     "lint": "npx eslint .",
     "lint:fix": "npm run lint --fix",
     "test": "jest",
@@ -15,7 +14,8 @@
     "db:generate": "npx prisma generate",
     "db:deploy": "npx prisma migrate deploy",
     "db:studio": "npx prisma studio",
-    "db:format": "npx prisma format"
+    "db:format": "npx prisma format",
+    "db:seed": "ts-node src/seeds.ts"
   },
   "repository": {
     "type": "git",

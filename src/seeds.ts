@@ -1,10 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 
 import { Logger } from './logger/logger';
-import { DatabaseRepository } from './sqlite-converter-service/database-repository';
+import { SqliteDatabaseRepository } from './sqlite-database-repository/sqlite-database-repository';
 const prisma = new PrismaClient();
 const logger = new Logger('Seeds');
-const sqliteConverterService = new DatabaseRepository();
+const sqliteConverterService = new SqliteDatabaseRepository();
 
 // eslint-disable-next-line complexity
 async function seedDatabase() {
