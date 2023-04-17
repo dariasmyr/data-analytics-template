@@ -8,7 +8,7 @@ bash
 2) Install the necessary dependencies:
 `npm install`
 3) Create and connect to your NeDB database by updating the database file path in `src/app.ts`.
-4) Start operating with your data using the separate modules in `src/modules/`.
+4) Start operating with your data using the separate modules in `src`.
 5) Save your results with Prisma ORM by updating the Prisma configuration in `prisma/schema.prisma`. 
 6) Run `npm run build && npm start` to start the template.
 
@@ -32,6 +32,7 @@ bash
 - Run `npm run db:generate` to generate the Prisma client
 - Run `npm run db:studio` to open Prisma Studio
 - Run `npm run db:format` to format the schema
+- Run `npm run db:seed` to seed the database
 
 The default SQLite database path is `data/data.sqlite3`.
 
